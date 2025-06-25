@@ -99,3 +99,26 @@ temp/
 yarn.lock
 pnpm-lock.yaml
 
+# Supabase
+.supabase
+
+# Build artifacts
+build/
+dist/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux
+*~
+

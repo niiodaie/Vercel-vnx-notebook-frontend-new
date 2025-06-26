@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import './i18n/i18n'; // ✅ correct path
+import i18n from './i18n/i18n'; // ✅ THIS is the missing import
+import './index.css';
 
 function App() {
   const { t } = useTranslation();

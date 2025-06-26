@@ -1,104 +1,256 @@
-/* Additional custom styles for VNX Notebook */
+/* Enhanced VNX Notebook Styles */
 
-/* Note card hover effects */
+/* Form Elements */
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white;
+}
+
+.input-field:focus {
+  @apply shadow-md;
+}
+
+.select-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white cursor-pointer;
+}
+
+.select-field:focus {
+  @apply shadow-md;
+}
+
+.textarea-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y min-h-[200px] font-mono text-sm transition-all duration-200 bg-white;
+}
+
+.textarea-field:focus {
+  @apply shadow-md;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-primary:disabled {
+  @apply from-gray-400 to-gray-500 hover:from-gray-400 hover:to-gray-500;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-gray-300;
+}
+
+/* Note Cards */
 .note-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-blue-200 relative overflow-hidden;
 }
 
-.note-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.note-card::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 transition-transform duration-300;
 }
 
-/* Language selector dropdown animation */
-.language-dropdown {
-  transform: translateY(-10px);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+.note-card:hover::before {
+  @apply scale-x-100;
 }
 
-.language-dropdown.show {
-  transform: translateY(0);
+/* Tags and Badges */
+.tag-badge {
+  @apply inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full border border-blue-200;
 }
 
-/* Button press animation */
-.btn-press:active {
-  transform: scale(0.98);
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Custom toast styles */
-.Toastify__toast {
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-}
-
-.Toastify__toast--success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.Toastify__toast--error {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-}
-
-/* Loading animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Format badge animations */
 .format-badge {
-  transition: all 0.2s ease-in-out;
+  @apply inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-full border border-gray-200;
 }
 
-.format-badge:hover {
-  transform: scale(1.05);
+/* Code Editor Enhancements */
+.code-editor-container {
+  @apply border border-gray-300 rounded-lg overflow-hidden bg-gray-50;
 }
 
-/* Tag filter animations */
-.tag-filter-button {
-  transition: all 0.2s ease-in-out;
+.code-editor-container .npm__react-simple-code-editor__textarea {
+  @apply font-mono text-sm leading-relaxed;
 }
 
-.tag-filter-button:hover {
-  transform: translateY(-1px);
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .note-card:hover {
-    transform: none;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+/* Responsive Design */
+@media (max-width: 640px) {
+  .note-card {
+    @apply p-4;
   }
   
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .btn-primary,
+  .btn-secondary {
+    @apply py-2 px-4 text-sm;
+  }
+  
+  .input-field,
+  .select-field,
+  .textarea-field {
+    @apply py-2 px-3 text-sm;
   }
 }
 
-/* Dark mode support (future enhancement) */
+/* Loading Animation */
+.loading-spinner {
+  @apply animate-spin rounded-full border-4 border-gray-200 border-t-blue-600;
+}
+
+/* Smooth Transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-lg hover:bg-gray-500;
+}
+
+/* Text Truncation */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Gradient Backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Card Shadows */
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
+
+/* Status Indicators */
+.status-online {
+  @apply w-3 h-3 bg-green-500 rounded-full animate-pulse;
+}
+
+.status-syncing {
+  @apply w-3 h-3 bg-blue-500 rounded-full animate-spin;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .mobile-stack {
+    @apply flex-col space-y-4;
+  }
+  
+  .mobile-full {
+    @apply w-full;
+  }
+  
+  .mobile-text-sm {
+    @apply text-sm;
+  }
+}
+
+/* Dark Mode Support (Future Enhancement) */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #1f2937;
-    --bg-secondary: #374151;
-    --text-primary: #f9fafb;
-    --text-secondary: #d1d5db;
+  .dark-mode {
+    @apply bg-gray-900 text-white;
+  }
+  
+  .dark-mode .note-card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .dark-mode .input-field,
+  .dark-mode .select-field,
+  .dark-mode .textarea-field {
+    @apply bg-gray-800 border-gray-600 text-white;
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .note-card {
+    @apply border border-gray-300 mb-4 break-inside-avoid;
+  }
+}
+
+/* Accessibility Improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .input-field,
+  .select-field,
+  .textarea-field {
+    @apply border-2 border-black;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white border-2 border-black;
+  }
+  
+  .note-card {
+    @apply border-2 border-gray-800;
   }
 }
 
